@@ -1,0 +1,182 @@
+Microsoft Windows [Version 10.0.22631.4037]
+(c) Microsoft Corporation. All rights reserved.
+
+C:\Users\himan>mongosh
+Current Mongosh Log ID: 66cfee9b7cd6468d7c2710bb
+Connecting to:          mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.3.0
+Using MongoDB:          7.0.14
+Using Mongosh:          2.3.0
+
+For mongosh info see: https://www.mongodb.com/docs/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-08-28T23:18:10.206+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+------
+
+test>
+
+test>
+
+test> use chitkara
+switched to db chitkara
+chitkara> db.createCollectoion("user")
+TypeError: db.createCollectoion is not a function
+chitkara> cd chitkara
+Uncaught:
+SyntaxError: Missing semicolon. (1:2)
+
+> 1 | cd chitkara
+    |   ^
+  2 |
+
+chitkara> db
+chitkara
+chitkara> db.createCollections("user")
+TypeError: db.createCollections is not a function
+chitkara> dc.createCollection("user")
+ReferenceError: dc is not defined
+chitkara> db.createCollection("user")
+{ ok: 1 }
+chitkara> db.user.insertMany([{"name":"himanshu","age":19,"marks":99,"subject":"backend"},
+...         {"name":"hunar","age":18,"marks":100,"subject":"frontend"},
+...         {"name":"harmeet","age":28,"marks":88,"subject":"BEE"},
+...         {"name":"abcd","age":38,"marks":77,"subject":"FEE"},
+...         {"name":"efgh","age":48,"marks":66,"subject":"hindi"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66cfef897cd6468d7c2710bc'),
+    '1': ObjectId('66cfef897cd6468d7c2710bd'),
+    '2': ObjectId('66cfef897cd6468d7c2710be'),
+    '3': ObjectId('66cfef897cd6468d7c2710bf'),
+    '4': ObjectId('66cfef897cd6468d7c2710c0')
+  }
+}
+chitkara> db.createCollection("students")
+{ ok: 1 }
+chitkara> db.students.insertmany([{"name":"himanshu","age":19,"marks":99,"subject":"backend"},
+...         {"name":"hunar","age":18,"marks":100,"subject":"frontend"},
+...         {"name":"harmeet","age":28,"marks":88,"subject":"BEE"},
+...         {"name":"abcd","age":38,"marks":77,"subject":"FEE"},
+...         {"name":"efgh","age":48,"marks":66,"subject":"hindi"}])
+TypeError: db.students.insertmany is not a function
+chitkara> db.students.insertMany([{"name":"himanshu","age":19,"marks":99,"subject":"backend"},
+...         {"name":"hunar","age":18,"marks":100,"subject":"frontend"},
+...         {"name":"harmeet","age":28,"marks":88,"subject":"BEE"},
+...         {"name":"abcd","age":38,"marks":77,"subject":"FEE"},
+...         {"name":"efgh","age":48,"marks":66,"subject":"hindi"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66cff00a7cd6468d7c2710c1'),
+    '1': ObjectId('66cff00a7cd6468d7c2710c2'),
+    '2': ObjectId('66cff00a7cd6468d7c2710c3'),
+    '3': ObjectId('66cff00a7cd6468d7c2710c4'),
+    '4': ObjectId('66cff00a7cd6468d7c2710c5')
+  }
+}
+chitkara> db.createCollection("teachers")
+{ ok: 1 }
+chitkara> db.teachers.insertMany([        {"name":"abcd","age":56,"subject":"FEE","rating":5},
+...         {"name":"efgh","age":46,"subject":"BEE","rating":4},
+...         {"name":"ijkl","age":36,"subject":"backend","rating":3},
+...         {"name":"zxcv","age":26,"subject":"DBMS","rating":2},
+...         {"name":"bnmv","age":66,"subject":"CN","rating":1}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId('66cff09f7cd6468d7c2710c6'),
+    '1': ObjectId('66cff09f7cd6468d7c2710c7'),
+    '2': ObjectId('66cff09f7cd6468d7c2710c8'),
+    '3': ObjectId('66cff09f7cd6468d7c2710c9'),
+    '4': ObjectId('66cff09f7cd6468d7c2710ca')
+  }
+}
+chitkara> show collections
+students
+teachers
+user
+chitkara> db.user.insertOne({date:ISODate()})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cff8357cd6468d7c2710cb')
+}
+chitkara> db.user.find().pretty();
+[
+  {
+    _id: ObjectId('66cfef897cd6468d7c2710bc'),
+    name: 'himanshu',
+    age: 19,
+    marks: 99,
+    subject: 'backend'
+  },
+  {
+    _id: ObjectId('66cfef897cd6468d7c2710bd'),
+    name: 'hunar',
+    age: 18,
+    marks: 100,
+    subject: 'frontend'
+  },
+  {
+    _id: ObjectId('66cfef897cd6468d7c2710be'),
+    name: 'harmeet',
+    age: 28,
+    marks: 88,
+    subject: 'BEE'
+  },
+  {
+    _id: ObjectId('66cfef897cd6468d7c2710bf'),
+    name: 'abcd',
+    age: 38,
+    marks: 77,
+    subject: 'FEE'
+  },
+  {
+    _id: ObjectId('66cfef897cd6468d7c2710c0'),
+    name: 'efgh',
+    age: 48,
+    marks: 66,
+    subject: 'hindi'
+  },
+  {
+    _id: ObjectId('66cff8357cd6468d7c2710cb'),
+    date: ISODate('2024-08-29T04:25:25.091Z')
+  }
+]
+chitkara> db.user.findOne();
+{
+  _id: ObjectId('66cfef897cd6468d7c2710bc'),
+  name: 'himanshu',
+  age: 19,
+  marks: 99,
+  subject: 'backend'
+}
+chitkara> db.user.insertOne({"name":"himanshu","age":19,"marks":99,"subject":"backend"})
+{
+  acknowledged: true,
+  insertedId: ObjectId('66cffd7e7cd6468d7c2710cc')
+}
+chitkara> db.user.find({_id: objectId("66cfef897cd6468d7c2710bc")})
+ReferenceError: objectId is not defined
+chitkara>  db.user.find({_id:objectId("66cfef897cd6468d7c2710bc")})
+ReferenceError: objectId is not defined
+chitkara>  db.user.findOne({_id:objectId("66cfef897cd6468d7c2710bc")})
+ReferenceError: objectId is not defined
+chitkara> db.user.findOne({_id:ObjectId("66cfef897cd6468d7c2710bc")})
+{
+  _id: ObjectId('66cfef897cd6468d7c2710bc'),
+  name: 'himanshu',
+  age: 19,
+  marks: 99,
+  subject: 'backend'
+}
+chitkara> db.user.findOne({name:"himanshu"})
+{
+  _id: ObjectId('66cfef897cd6468d7c2710bc'),
+  name: 'himanshu',
+  age: 19,
+  marks: 99,
+  subject: 'backend'
+}
+chitkara>
