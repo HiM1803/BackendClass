@@ -1,0 +1,26 @@
+mongosh - start mongo
+use name- create file
+db.createCollection("new") - create collection
+db.new.insertOne({name:"ankur", age:28, class:"b9"})
+
+ db.new.insertMany([{ "name": "dksdf", "age": 40, "marks": 99, "sub": "eng" },
+{ "name": "ofdge", "age": 20, "marks": 80, "sub": "math" },
+{ "name": "dfgae", "age": 30, "marks": 70, "sub": "dso" },
+{ "name": "jjksd", "age": 50, "marks": 60, "sub": "dfgad" }]) - add data
+
+db.new.insertOne({date:ISODate()}) - watch date
+db.new.find() - show all documents
+db.new.find().pretty() - makes document pretty
+db.new.findOne({ _id: ObjectId('66cebe0c1ea7bc58f52710bc') }); - finds the particular key
+
+db.new.estimatedDocumentCount() 
+db.new.countDocuments() - gives the number of total entries.
+
+db.new.updateMany({sub:"eng"}, {$set:{sub:"datascience"}}) - update new entries or add new entries.
+db.new.updateOne({name:"ankur"},  { $set: { grade: "B" } }) - add new entries individually.
+
+db.new.find({age:40,marks:99}) - find students with age 40 and marks 99.
+db.new.find({age:{$gte 18},marks:{$gte 80}}) - find with greater values than 18 and 80.
+db.new.find({$or:[{age: {$gte:30}}, {marks:{$gte:80}}]}) - with or opertor.
+db.new.find({age:{$exists:true}}) - check if the field exists.
+db.new.find({age:{$exists:true}, marks :{$type:"int"}}) - check if the type is correct.
